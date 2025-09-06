@@ -1,0 +1,11 @@
+anthropic
+requests
+zstandard
+cairosvg
+openai
+chess
+pillow
+markdown>=3.4.4
+youtube-transcript-api>=0.4.4
+feedparser>=6.0.10
+python-dateutil>=2.8.2
