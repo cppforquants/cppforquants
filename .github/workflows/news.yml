@@ -1,0 +1,36 @@
+name: Daily Video News Publisher
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 5 */2 * *'
+
+jobs:
+  financial-news:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        pip install -r requirements.txt
+
+    - name: Run daily puzzle script
+      env:
+        OPENAI_API_KEY: ${{ secrets.ANTHROPIC_KEY }}
+        WP_USERNAME: ${{ secrets.WP_USERNAME }}
+        WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
+        WP_URL: ${{ secrets.WP_URL }}
+        YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        PROXY_USERNAME: ${{ secrets.PROXY_USERNAME }}
+        PROXY_PASSWORD: ${{ secrets.PROXY_PASSWORD }}
+      run: |
+        python src/jobs/news.py

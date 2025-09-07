@@ -12,7 +12,6 @@ import random
 
 # === CONFIG ===
 YOUTUBE_API_KEY = os.environ["YOUTUBE_API_KEY"]
-OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 WP_URL = os.environ["WP_URL"]
 WP_USERNAME = os.environ["WP_USERNAME"]
 WP_PASSWORD = os.environ["WP_PASSWORD"]
@@ -22,15 +21,22 @@ ANTHROPIC_KEY = os.environ["ANTHROPIC_KEY"]
 PUZZLE_CATEGORY_ID = 31
 NEWS_CATEGORY_ID = 28
 MAX_VIDEOS = 3
-VIDEO_NEWS_CATEGORY_ID = 36
+VIDEO_NEWS_CATEGORY_ID = 41
 title_date = datetime.today().strftime("%B %d, %Y")
-openai.api_key = OPENAI_API_KEY
 
 FINANCE_YOUTUBE_CHANNELS = {
-    "news": {"Bryan Downing": {"id": "UCeYq5g4YHXzqDtFjGFhM_yw"},
-             "Bloomberg": {"id": "UCIALMKvObZNtJ6AmdCLP7Lg"},
+    "news": {"Bloomberg": {"id": "UCIALMKvObZNtJ6AmdCLP7Lg"},
              "Ark Invest": {"id": "UCK-zlnUfoDHzUwXcbddtnk"},
-             "Capital Trading": {"id": "UCn65Ma-zHYgnr56LPAwWDTw"}
+             "Capital Trading": {"id": "UCn65Ma-zHYgnr56LPAwWDTw"},
+             "New York Stock Exchange": {"id": "UCG2B6emunc-8ACAChpHv0qQ"},
+             "Business Insider": {"id": "UCcyq283he07B7_KUX07mmtA"},
+             "Tina Huang": {"id": "UC2UXDak6o7rBm23k3Vv5dww"},
+             "Learn Coding": {"id": "UCV7cZwHMX_0vk8DSYrS7GCg"},
+             "The Profit Academy": {"id": "UCBiUrL_GEL2dJBGsuWk4ENQ"},
+             "Investing Simplified": {"id": "Cr4XXQznhlgfzo4mwOgkF8w"},
+             "CNBC Television": {"id": "UCrp_UI8XtuYfpiqluWLD7Lw"},
+             "ByteMonk": {"id": "UCzCsyvyrq38R6TnztEzOmgg"},
+             "The MMXM Trader": {"id": "UCDvfZ4HxuZGyTh01s_dxcQw"}
              }
 }
 
@@ -190,7 +196,7 @@ def generate_intro(title, description, transcript):
 
     prompt = f"""You're writing a presentation of a video in a paragraph for
 a finance article and I want you to apply exacly this style:
-{prompt_style}
+{prompt_style}. Don't write the title of the video at the start of your paragraph.
 
 Number of words: around 150
 Title: {title}
@@ -361,7 +367,7 @@ def get_latest_video_article_url():
             "per_page": 1,
             "orderby": "date",
             "order": "desc",
-            "status": "publish"
+            "status": "draft"
         }
     )
     response.raise_for_status()
