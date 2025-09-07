@@ -25,7 +25,7 @@ jobs:
 
     - name: Run daily puzzle script
       env:
-        OPENAI_API_KEY: ${{ secrets.ANTHROPIC_KEY }}
+        ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_KEY }}
         WP_USERNAME: ${{ secrets.WP_USERNAME }}
         WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
         WP_URL: ${{ secrets.WP_URL }}
