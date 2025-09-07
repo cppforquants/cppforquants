@@ -23,7 +23,7 @@ jobs:
         sudo apt update
         pip install -r requirements.txt
 
-    - name: Run daily puzzle script
+    - name: Run financial news cron
       env:
         ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_KEY }}
         WP_USERNAME: ${{ secrets.WP_USERNAME }}
