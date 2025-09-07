@@ -3,7 +3,10 @@ name: Financial News
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 5 */2 * *'
+    # Monday 09:00 UTC = 9 AM winter, 10 AM summer in London
+    - cron: '0 9 * * 1'
+    # Thursday 09:00 UTC = 9 AM winter, 10 AM summer in London
+    - cron: '0 9 * * 4'
 
 jobs:
   financial-news:
