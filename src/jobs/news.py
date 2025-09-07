@@ -367,7 +367,7 @@ def get_latest_video_article_url():
             "per_page": 1,
             "orderby": "date",
             "order": "desc",
-            "status": "draft"
+            "status": "publish"
         }
     )
     response.raise_for_status()
