@@ -8,6 +8,7 @@ on:
 jobs:
   financial-news:
     runs-on: ubuntu-latest
+    environment: prod
 
     steps:
     - name: Checkout repo
