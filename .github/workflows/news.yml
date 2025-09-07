@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # Monday 09:00 UTC = 9 AM winter, 10 AM summer in London
-    - cron: '0 9 * * 1'
+    - cron: '0 9 * * 2'
     # Thursday 09:00 UTC = 9 AM winter, 10 AM summer in London
     - cron: '0 9 * * 4'
 
