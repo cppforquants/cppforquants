@@ -1,4 +1,4 @@
-name: Daily Video News Publisher
+name: Financial News
 
 on:
   workflow_dispatch:
