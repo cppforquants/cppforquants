@@ -12,7 +12,7 @@ import random
 
 # === CONFIG ===
 YOUTUBE_API_KEY = os.environ["YOUTUBE_API_KEY"]
-WP_URL = os.environ["WP_URL"]
+WP_URL = "https://cppforquantscop.com"
 WP_USERNAME = os.environ["WP_USERNAME"]
 WP_PASSWORD = os.environ["WP_PASSWORD"]
 PROXY_USERNAME = os.environ["PROXY_USERNAME"]
