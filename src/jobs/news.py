@@ -284,7 +284,7 @@ def build_article(videos, backlink_url):
 
 
 def generate_title(videos):
-    prompt = """You're writing a title for a finance blog post. 8 words max.
+    prompt = """You're writing a title for a finance blog post. 10 words max.
     Using the video list below, infer a simple yet efficient title for
     google search that you think is valuable for SEO news.
 
@@ -297,8 +297,8 @@ def generate_title(videos):
     client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
     response = client.messages.create(
         model="claude-3-haiku-20240307",
-        max_tokens=50,  # Short response for title generation
-        temperature=0.7,
+        max_tokens=50,
+        temperature=1,
         messages=[{"role": "user", "content": prompt}]
     )
 
