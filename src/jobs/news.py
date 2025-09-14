@@ -347,7 +347,7 @@ def upload_thumbnail_as_featured_image(video):
                     f"{video['video_id']}/maxresdefault.jpg"
     img_data = requests.get(thumbnail_url).content
 
-    filename = f"video_chess_news_article_{video['video_id']}.jpg"
+    filename = f"cpp_for_qaunts_{video['video_id']}.jpg"
     headers = {
         "Content-Disposition": f"attachment; filename={filename}",
         "Content-Type": "image/jpeg",
@@ -402,11 +402,15 @@ def get_related_article_links():
     }
 
 
+
 def add_related_links_section():
     links = get_related_article_links()
     section = "## ♟️ Interested in More?\n\n"
     if links["news"]:
-        section += f"- Read the latest financial news: ({links['news']}).\n"
+        section += (
+            f"- Read the latest financial news: "
+            f"<a href='{links['news']}' style='color: blue;'>c++ for quants news</a>.\n"
+        )
     return section + "\n"
 
 
