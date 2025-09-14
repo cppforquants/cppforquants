@@ -1,6 +1,5 @@
 import anthropic
 import os
-import openai
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
 from youtube_transcript_api.proxies import WebshareProxyConfig
 import feedparser
@@ -19,7 +18,6 @@ PROXY_USERNAME = os.environ["PROXY_USERNAME"]
 PROXY_PASSWORD = os.environ["PROXY_PASSWORD"]
 ANTHROPIC_KEY = os.environ["ANTHROPIC_KEY"]
 PUZZLE_CATEGORY_ID = 31
-NEWS_CATEGORY_ID = 28
 MAX_VIDEOS = 3
 VIDEO_NEWS_CATEGORY_ID = 41
 title_date = datetime.today().strftime("%B %d, %Y")
@@ -286,7 +284,7 @@ def build_article(videos, backlink_url):
         content += f"{intro}\n\n"
         content += f"{v['url']}\n\n"
         content += "---\n\n"
-    # content += add_related_links_section()
+    content += add_related_links_section()
     return content
 
 
@@ -382,7 +380,37 @@ def get_latest_video_article_url():
     return posts[0]["link"] if posts else None
 
 
-# === MAIN ===
+def get_related_article_links():
+    def get_latest_post_url(category_id, index=0):
+        response = requests.get(
+            f"{WP_URL}/wp-json/wp/v2/posts",
+            auth=(WP_USERNAME, WP_PASSWORD),
+            params={
+                "categories": category_id,
+                "per_page": index + 1,
+                "orderby": "date",
+                "order": "desc",
+                "status": "publish"
+            }
+        )
+        response.raise_for_status()
+        posts = response.json()
+        return posts[index]["link"] if len(posts) > index else None
+
+    return {
+        "news": get_latest_post_url(VIDEO_NEWS_CATEGORY_ID),
+    }
+
+
+def add_related_links_section():
+    links = get_related_article_links()
+    section = "## ♟️ Interested in More?\n\n"
+    if links["news"]:
+        section += f"- Read the latest financial news: ({links['news']}).\n"
+    return section + "\n"
+
+
+
 if __name__ == "__main__":
     videos = get_latest_youtube_rss_videos(FINANCE_YOUTUBE_CHANNELS,
                                            max_results=4)
