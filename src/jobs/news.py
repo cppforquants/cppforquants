@@ -36,7 +36,14 @@ FINANCE_YOUTUBE_CHANNELS = {
              "Investing Simplified": {"id": "Cr4XXQznhlgfzo4mwOgkF8w"},
              "CNBC Television": {"id": "UCrp_UI8XtuYfpiqluWLD7Lw"},
              "ByteMonk": {"id": "UCzCsyvyrq38R6TnztEzOmgg"},
-             "The MMXM Trader": {"id": "UCDvfZ4HxuZGyTh01s_dxcQw"}
+             "The MMXM Trader": {"id": "UCDvfZ4HxuZGyTh01s_dxcQw"},
+             "Cpp nuts": {"id": "UCs6sf4iRhhE875T1QjG3wPQ"},
+             "Code Head": {"id": "UCFVteOob_YXJHPaGTqlDV2Q"},
+             "AI Lab": {"id": "UCelfWQr9sXVMTvBzviPGlFw"},
+             "Quant Prof": {"id": "UCvMTuKAUGriNrF6LsEScXFg"},
+             "SMB Capital": {"id": "UCg3B_joekBGJ1s_4fRjsMKA"},
+             "Dimitri Bianco": {"id": "UCLHvJ1KNGE1s-A3ODiSgplw"},
+             "Jane Street": {"id": "UCDsVC_ewpcEW_AQcO-H-RDQ"}
              }
 }
 
